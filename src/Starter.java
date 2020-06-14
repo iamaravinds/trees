@@ -13,10 +13,15 @@ public class Starter {
         // Children of child2
         Node<String> child5 = child2.addChild(new Node<String>("Child 5"));
         Node<String> child6 = child2.addChild(new Node<String>("Child 6"));
-        Node<String> child7 = child2.addChild(new Node<String>("Child 7"));
-        Node<String> child8 = child2.addChild(new Node<String>("Child 8"));
+        Node<String> child7 = child5.addChild(new Node<String>("Child 7"));
+        Node<String> child8 = child5.addChild(new Node<String>("Child 8"));
         System.out.println("All nodes are added ...");
         System.out.println("Initiating Print ...");
+        root.printAllNodes(root, "-");
+        // child1.printAllNodes(child1, "**");
+        System.out.println(child8.getRootNode(child8).getData());
+        System.out.println("Deleting Child 5 ....");
+        child5.deleteNode();
         root.printAllNodes(root, "-");
     }
 

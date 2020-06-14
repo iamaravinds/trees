@@ -50,4 +50,36 @@ public class Node<T> {
         System.out.println(appender + node.getData());
         node.getChildren().forEach(each -> printAllNodes(each, appender + appender));
     }
+
+    public Node<T> getRootNode(Node<T> node) {
+        if (node.getParent() == null)
+            return this;
+        return parent.getRootNode(parent);
+    }
+
+    public void deleteNode() {
+        if (this.parent != null) {
+            int index = this.parent.getChildren().indexOf(this);
+            this.parent.getChildren().remove(this);
+            for (Node<T> node : getChildren()) {
+                node.setParent(this.parent);
+            }
+            this.parent.getChildren().addAll(index, getChildren());
+        } else
+            this.deleteRootNode();
+        this.getChildren().clear();
+    }
+
+    public Node<T> deleteRootNode() {
+        if (this.parent != null) {
+            throw new IllegalStateException("deleteRootNode is called for non root");
+        }
+        final Node<T> newParent = this.getChildren().get(0);
+        newParent.setParent(null);
+        this.getChildren().remove(0);
+        this.getChildren().forEach(child -> child.setParent(newParent));
+        newParent.getChildren().addAll(getChildren());
+        this.getChildren().clear();
+        return newParent;
+    }
 }
