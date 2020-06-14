@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Node<T> {
+public class Tree<T> {
 
     private T data = null;
-    private List<Node<T>> children = new ArrayList<>();
-    private Node<T> parent = null;
+    private List<Tree<T>> children = new ArrayList<>();
+    private Tree<T> parent = null;
 
-    public Node(T data) {
+    public Tree(T data) {
         this.data = data;
     }
 
-    public Node<T> getParent() {
+    public Tree<T> getParent() {
         return parent;
     }
 
@@ -19,7 +19,7 @@ public class Node<T> {
         return data;
     }
 
-    public List<Node<T>> getChildren() {
+    public List<Tree<T>> getChildren() {
         return children;
     }
 
@@ -27,31 +27,31 @@ public class Node<T> {
         this.data = data;
     }
 
-    public void setParent(Node<T> parent) {
+    public void setParent(Tree<T> parent) {
         this.parent = parent;
     }
 
-    public void setChildren(List<Node<T>> children) {
+    public void setChildren(List<Tree<T>> children) {
         this.children = children;
     }
 
-    public Node<T> addChild(Node<T> child) {
+    public Tree<T> addChild(Tree<T> child) {
         child.setParent(this);
         this.children.add(child);
         return child;
     }
 
-    public void addChildren(List<Node<T>> children) {
+    public void addChildren(List<Tree<T>> children) {
         children.forEach(each -> each.setParent(this));
         this.children.addAll(children);
     }
 
-    public void printAllNodes(Node<T> node, String appender) {
+    public void printAllNodes(Tree<T> node, String appender) {
         System.out.println(appender + node.getData());
         node.getChildren().forEach(each -> printAllNodes(each, appender + appender));
     }
 
-    public Node<T> getRootNode(Node<T> node) {
+    public Tree<T> getRootNode(Tree<T> node) {
         if (node.getParent() == null)
             return this;
         return parent.getRootNode(parent);
@@ -61,7 +61,7 @@ public class Node<T> {
         if (this.parent != null) {
             int index = this.parent.getChildren().indexOf(this);
             this.parent.getChildren().remove(this);
-            for (Node<T> node : getChildren()) {
+            for (Tree<T> node : getChildren()) {
                 node.setParent(this.parent);
             }
             this.parent.getChildren().addAll(index, getChildren());
@@ -70,11 +70,11 @@ public class Node<T> {
         this.getChildren().clear();
     }
 
-    public Node<T> deleteRootNode() {
+    public Tree<T> deleteRootNode() {
         if (this.parent != null) {
             throw new IllegalStateException("deleteRootNode is called for non root");
         }
-        final Node<T> newParent = this.getChildren().get(0);
+        final Tree<T> newParent = this.getChildren().get(0);
         newParent.setParent(null);
         this.getChildren().remove(0);
         this.getChildren().forEach(child -> child.setParent(newParent));

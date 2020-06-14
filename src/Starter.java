@@ -1,20 +1,20 @@
 public class Starter {
 
     public static void main(String[] args) {
-        Node<String> root = new Node<String>("root");
+        Tree<String> root = new Tree<String>("root");
         // Children of root
-        Node<String> child1 = root.addChild(new Node<String>("Child 1"));
-        Node<String> child2 = root.addChild(new Node<String>("Child 2"));
+        Tree<String> child1 = root.addChild(new Tree<String>("Child 1"));
+        Tree<String> child2 = root.addChild(new Tree<String>("Child 2"));
 
         // Children of child1
-        Node<String> child3 = child1.addChild(new Node<String>("Child 3"));
-        Node<String> child4 = child1.addChild(new Node<String>("Child 4"));
+        Tree<String> child3 = child1.addChild(new Tree<String>("Child 3"));
+        Tree<String> child4 = child1.addChild(new Tree<String>("Child 4"));
 
         // Children of child2
-        Node<String> child5 = child2.addChild(new Node<String>("Child 5"));
-        Node<String> child6 = child2.addChild(new Node<String>("Child 6"));
-        Node<String> child7 = child5.addChild(new Node<String>("Child 7"));
-        Node<String> child8 = child5.addChild(new Node<String>("Child 8"));
+        Tree<String> child5 = child2.addChild(new Tree<String>("Child 5"));
+        Tree<String> child6 = child2.addChild(new Tree<String>("Child 6"));
+        Tree<String> child7 = child5.addChild(new Tree<String>("Child 7"));
+        Tree<String> child8 = child5.addChild(new Tree<String>("Child 8"));
         System.out.println("All nodes are added ...");
         System.out.println("Initiating Print ...");
         root.printAllNodes(root, "-");
