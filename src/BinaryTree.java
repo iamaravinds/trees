@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class BinaryTree<T> {
     private T data = null;
     private BinaryTree<T> left, right = null;
