@@ -1,6 +1,9 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class BinaryTree<T> {
     private T data = null;
-    private BinaryTree<T> parent, left, right = null;
+    private BinaryTree<T> left, right = null;
 
     public T getData() {
         return data;
@@ -8,14 +11,6 @@ public class BinaryTree<T> {
 
     public void setData(T data) {
         this.data = data;
-    }
-
-    public BinaryTree<T> getParent() {
-        return parent;
-    }
-
-    public void setParent(BinaryTree<T> parent) {
-        this.parent = parent;
     }
 
     public BinaryTree<T> getLeft() {
@@ -34,4 +29,9 @@ public class BinaryTree<T> {
         this.right = right;
     }
 
+    BinaryTree(T data) {
+        this.data = data;
+        this.left = null;
+        this.right = null;
+    }
 }

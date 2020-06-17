@@ -1,6 +1,0 @@
-/**
- * Traversals
- */
-public class Traversals {
-
-}
