@@ -3,6 +3,7 @@ public class Starter {
     public static void main(String[] args) {
         // initiateTree(); // Normal Tree
         initiateBinaryTree(); // Binary Tree
+        initiateBinarySearchTree(); // Binary Search Tree
 
     }
 
@@ -81,5 +82,24 @@ public class Starter {
         System.out.println(traverseTree.treeHeight(root));
         System.out.println();
 
+    }
+
+    public static void initiateBinarySearchTree() {
+        System.out.println("Initiating Binary Search Tree");
+        BSTOperations tree = new BSTOperations(5);
+
+        System.out.println("Inserting Nodes");
+        tree.insertNode(4);
+        tree.insertNode(6);
+        tree.insertNode(3);
+        tree.insertNode(7);
+        tree.insertNode(2);
+        tree.insertNode(1);
+        tree.insertNode(8);
+        tree.insertNode(0);
+        tree.insertNode(9);
+
+        System.out.println("Printing Binary Search Tree");
+        tree.printBST();
     }
 }
